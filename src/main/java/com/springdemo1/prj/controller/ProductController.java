@@ -1,5 +1,7 @@
 package com.springdemo1.prj.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,8 @@ import com.springdemo1.prj.service.ProductService;
 @RestController
 @RequestMapping("/api/v1/product-api")
 public class ProductController {
+	
+	private Logger logger = LoggerFactory.getLogger(ProductController.class);
 
 	@Autowired
 	private ProductService productService;
@@ -23,6 +27,7 @@ public class ProductController {
 	// http://127.0.0.1:8080/api/v1/product-api/product/0
 	@GetMapping(value = "/product/{productId}")
 	public ProductDTO getProduct(@PathVariable String productId) {
+		logger.info("ProductId: {}", productId);
 		return productService.getProduct(productId);
 	}
 	

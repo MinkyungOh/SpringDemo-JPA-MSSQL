@@ -7,7 +7,7 @@
 	        <prudent>true</prudent>
 
 	        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-	            <fileNamePattern>D:/webapps/v2/log/springdemo1.%d{yyyy-MM-dd}.log</fileNamePattern>
+	            <fileNamePattern>D:/omin/workspace/log/springdemo1.%d{yyyy-MM-dd}.log</fileNamePattern>
 	            <maxHistory>30</maxHistory>
 	            <totalSizeCap>100MB</totalSizeCap>
 	        </rollingPolicy>
@@ -18,7 +18,7 @@
 
 	        <encoder>
 	        	<charset>UTF-8</charset>
-	            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level --- [%thread] %logger{35} : %msg %n</pattern>
+	            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] --- [%thread] %logger{35} : %msg %n</pattern>
 	        </encoder>
 	    </appender>
 	    
@@ -31,7 +31,7 @@
 	        </layout>
 	        <encoder>
 	        	<charset>UTF-8</charset>
-	            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level --- [%thread] %logger{35} : %msg %n</pattern>
+	            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] --- [%thread] %logger{35} : %msg %n</pattern>
 	        </encoder>
 	    </appender>
 
