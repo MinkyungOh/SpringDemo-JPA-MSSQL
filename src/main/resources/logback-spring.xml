@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+<configuration>
+	<!-- 개발 -->
+	<springProfile name="debug">
+	    <appender name="dailyRollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	        <prudent>true</prudent>
+
+	        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	            <fileNamePattern>D:/webapps/v2/log/springdemo1.%d{yyyy-MM-dd}.log</fileNamePattern>
+	            <maxHistory>30</maxHistory>
+	            <totalSizeCap>100MB</totalSizeCap>
+	        </rollingPolicy>
+
+	        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+	            <level>INFO</level>
+	        </filter>
+
+	        <encoder>
+	        	<charset>UTF-8</charset>
+	            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level --- [%thread] %logger{35} : %msg %n</pattern>
+	        </encoder>
+	    </appender>
+	    
+	    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+	        <withJansi>true</withJansi>
+	        <layout class="ch.qos.logback.classic.PatternLayout">
+	            <Pattern>
+	                %d{yyyy-MM-dd HH:mm:ss.SSS} %green([%-5level]) %yellow(%C{1.}): %msg%n%throwable
+	            </Pattern>
+	        </layout>
+	        <encoder>
+	        	<charset>UTF-8</charset>
+	            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level --- [%thread] %logger{35} : %msg %n</pattern>
+	        </encoder>
+	    </appender>
+
+	    <logger name="org.springframework.web" level="INFO"/>
+	    <logger name="org.thymeleaf" level="INFO"/>
+	    <logger name="org.hibernate.engine.internal" level="INFO"/>
+	    <logger name="com.springdemo1.prj" level="DEBUG"/>
+
+	    <root level="INFO">
+	        <appender-ref ref="dailyRollingFileAppender"/>
+	        <appender-ref ref="console"/>
+	    </root>
+	</springProfile>
+</configuration>
