@@ -1,8 +1,12 @@
 package com.springdemo1.prj.controller;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,8 +37,12 @@ public class ProductController {
 	
 	// http://127.0.0.1:8080/api/v1/product-api/product
 	@PostMapping(value = "/product")
-	public ProductDTO createProduct(@RequestBody ProductDTO productDTO) {
-		return productService.saveProduct(productDTO);
+	public ResponseEntity<ProductDTO> createProduct(@Valid @RequestBody ProductDTO productDTO) {
+		
+		ProductDTO response = productService.saveProduct(productDTO);
+		
+		logger.info(response.toString());
+		return ResponseEntity.status(HttpStatus.OK).body(response);
 	}
 	
 	// http://127.0.0.1:8080/api/v1/product-api/product/0
